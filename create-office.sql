@@ -1,11 +1,9 @@
 
--- Tworzenie bazy danych Biuro
-CREATE DATABASE Biuro
+CREATE DATABASE Office
 GO
--- u¿ycie bazy danych Biuri
-USE Biuro
--- utworzenie tabel pracownicy, klienci, sprzêt komputerowy, dokumenty lokalne,
--- dokumenty zagraniczne, godziny pracy oraz slu¿bowe samochody
+
+USE Office
+
 CREATE TABLE employees
 (
 employeeId INT IDENTITY(1,1)PRIMARY KEY NOT NULL
@@ -74,7 +72,7 @@ brand nVarChar(20) NOT NULL
 ,RegNo Char(10)
 ,employeeID INT NOT NULL
 )
--- Dodawanie kluczy obcy
+
 ALTER TABLE company_cars
 ADD CONSTRAINT employees_company_cars
 FOREIGN KEY (employeeID)
@@ -104,7 +102,7 @@ ADD CONSTRAINT clients_foreign_documents
 FOREIGN KEY (clientId)
 REFERENCES clients(clientId)
 GO
--- Dodawanie danych do tabel
+
 INSERT employees(firstName,lastName,nrPesel,mobileNo,insertDate)
 VALUES ('Nikodem', 'Dyzma','71234568191','511230700','2017-01-01')
 INSERT employees(firstName,lastName,nrPesel,mobileNo,insertDate)
@@ -178,21 +176,4 @@ INSERT hardware(brand,model,guaranteeDate,employeeID)
 VALUES('ASUS','ExtremePro','2023-11-22',4)
 INSERT hardware(brand,model,guaranteeDate,employeeID)
 VALUES('Samsung','4278fhsh','2024-05-21',5)
--- Zapytanie o sprzet pracownika z numerem 5
-SELECT * FROM hardware
-INNER JOIN employees
-ON employees.employeeId =hardware.employeeID 
-WHERE employees.employeeId = 5;
--- Dokumenty lokalne klienta nr 2
-SELECT * FROM local_documents
-INNER JOIN clients
-ON clients.clientId = local_documents.clientID
-WHERE clients.clientId = 2;
--- sprawdzanie jakiej marki samochód oraz sprzêt komputerowy ma pracownik nr 1
-SELECT brand
-FROM hardware
-WHERE employeeID=1
-UNION
-SELECT brand
-FROM company_cars
-WHERE employeeID=1
+
