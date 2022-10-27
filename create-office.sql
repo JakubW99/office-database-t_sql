@@ -2,10 +2,10 @@
 -- Tworzenie bazy danych Biuro
 CREATE DATABASE Biuro
 GO
--- u¿ycie bazy danych Biuri
+-- uÂ¿ycie bazy danych Biuri
 USE Biuro
--- utworzenie tabel pracownicy, klienci, sprzêt komputerowy, dokumenty lokalne,
--- dokumenty zagraniczne, godziny pracy oraz slu¿bowe samochody
+-- utworzenie tabel pracownicy, klienci, sprzÃªt komputerowy, dokumenty lokalne,
+-- dokumenty zagraniczne, godziny pracy oraz sluÂ¿bowe samochody
 CREATE TABLE employees
 (
 employeeId INT IDENTITY(1,1)PRIMARY KEY NOT NULL
@@ -188,7 +188,7 @@ SELECT * FROM local_documents
 INNER JOIN clients
 ON clients.clientId = local_documents.clientID
 WHERE clients.clientId = 2;
--- sprawdzanie jakiej marki samochód oraz sprzêt komputerowy ma pracownik nr 1
+-- sprawdzanie jakiej marki samochÃ³d oraz sprzÃªt komputerowy ma pracownik nr 1
 SELECT brand
 FROM hardware
 WHERE employeeID=1
